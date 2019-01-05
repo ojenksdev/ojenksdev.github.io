@@ -32,23 +32,15 @@
 
         // AJAX CONTACT FORM
         $(".contactform").on("submit", function() {
-            $(".output_message").text("Loading...");
+            $(".output_message").text("Thank you for your message.");
 
-            var form = $(this);
+            
             $.ajax({
-                url: form.attr("action"),
-                method: form.attr("method"),
-                data: form.serialize(),
-                success: function(result) {
-                    if (result == "success") {
-                        $(".contactform").find(".output_message").addClass("success");
-                        $(".output_message").text("Message Sent!");
-                    } else {
-                        $(".contactform").find(".output_message").addClass("error");
-                        $(".output_message").text("Error Sending!");
-                    }
-                }
-            });
+                url: "https://usebasin.com/f/46c0c427b32c.json",
+                method: "POST",
+                data: {message: "hello", email: "ojenksdev@gmail.com"},
+                dataType: "json", 
+                });
 
             return false;
         });
